@@ -4,7 +4,6 @@ public class Scania extends Car{
     private double currentTilt; //The tilt of the cars cargo
     private static final double INITIAL = 0; //The minimum tilt of the cargo is equal to zero degrees. This is the initial tilt of the cargo.
     private static final double MAX = 70; //The maximum tilt of the cargo is equal to 70 degrees
-    private boolean haveCargo;
 
     /**
      * Constructor for Scania objects

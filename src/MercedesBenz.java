@@ -61,6 +61,8 @@ public class MercedesBenz extends Car {
             if (loadingDistance(car)) {
                 if (cars.size() < loadingCapacity) {
                     if (!rampUp) {
+                        car.setxCord(getyCord());
+                        car.setyCord(getyCord());
                         cars.add(car);
                     }
                 }
@@ -79,13 +81,11 @@ public class MercedesBenz extends Car {
      * Method for unloading cars in the order of first-in-last-out
      * given that the ramp is down and that the speed is equal to zero.
      * The cars that are loaded out is put down in the direction and
-     * have the coordinates that the Mercedes has.
-     *
-     * @param i the amount of cars that are supposed to be loaded out of the Mercedes.
+     * have the coordinates that the Mercedes h
      */
-    public void unloadCar(int i) {
+    public void unloadCar() {
+        int j = cars.size() - 1;
         if (rampUp == false){
-            for (int j = cars.size() -1 ; j < i ; i-- ){
                 switch (getDir()){
                     case EAST:
                         cars.get(j).setxCord(-1);
@@ -102,7 +102,6 @@ public class MercedesBenz extends Car {
                 cars.remove(j);
             }
         }
-    }
 
     /**
     * Method to see distance between the loading car and car to be loaded.

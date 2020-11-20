@@ -91,9 +91,8 @@ public class CarTest {
         mercedesBenz.putRampDown();
         mercedesBenz.loadCar(Volvo);
         mercedesBenz.loadCar(Saab);
-        mercedesBenz.unloadCar(2);
+        mercedesBenz.unloadCar();
         assertEquals(0,mercedesBenz.getCarsSize());
-
     }
 
 
