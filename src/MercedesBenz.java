@@ -1,13 +1,13 @@
 import java.awt.*;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Stack;
 
-public class MercedesBenz extends Car {
-    //public static final int loadingWeight = XX
+public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     public static final int loadingCapacity = 10; //The capacity the car has to load other cars for transport
-    public static final int proximity = 5; //The distance to other car objects from the MercedesBenz
-    private boolean rampUp; //True if the ramp is up
-    private List<Car> cars; //A list with car objects
+    public static final int proximity = 5; //The distance to other motorvehicle objects from the MercedesBenz
+    private static final int MAXWEIGHT = 8000;
+    private boolean rampUp; //True if the ramp is up.
+    private Stack<MotorVehicle> cars; //A stack with motorvehicle objects.
+
 
 
     public static void main(String[] args) {
@@ -26,10 +26,10 @@ public class MercedesBenz extends Car {
      * Constructor for CarTransport objects
      */
     public MercedesBenz() {
-        super(2, Color.green, 100, "MercedesBenz", 0, 0);
-        cars = new ArrayList<>(10);
+        super(2, Color.green, 500, "MercedesBenz", 15000, 0,0);
+        //cars = new ArrayList<>(10);
+        cars = new Stack<>();
         rampUp = true;
-        //hårdkoda weight här så att den inte kan lasta sig själv ex weight + 5000
     }
 
     /**
@@ -56,36 +56,33 @@ public class MercedesBenz extends Car {
      *
      * @param car The car that you want to load on Mercedes.
      */
-    public void loadCar(Car car) {
-        if (checkIfPersonalVehicle(car)) {
+    @Override
+    public void loadCar(MotorVehicle car) {
+        if (car.getWeight() <= MAXWEIGHT) {
             if (loadingDistance(car)) {
                 if (cars.size() < loadingCapacity) {
                     if (!rampUp) {
-                        car.setxCord(getyCord());
+                        car.setxCord(getxCord());
                         car.setyCord(getyCord());
-                        cars.add(car);
+                        cars.push(car);
                     }
                 }
             }
         }
     }
 
-    public boolean checkIfPersonalVehicle (Car car) {
-        if (car instanceof PersonalVehicle) {
-            return true;
-        }
-        return false;
-    }
-
     /**
      * Method for unloading cars in the order of first-in-last-out
      * given that the ramp is down and that the speed is equal to zero.
      * The cars that are loaded out is put down in the direction and
-     * have the coordinates that the Mercedes h
+     * have the coordinates that the Mercedes has.
+     *
      */
+    @Override
     public void unloadCar() {
-        int j = cars.size() - 1;
-        if (rampUp == false){
+        //ska det vara - 1? kom ihåg till test.
+        int j = cars.size() -1;
+        if (!this.getRampUp()){
                 switch (getDir()){
                     case EAST:
                         cars.get(j).setxCord(-1);
@@ -99,21 +96,38 @@ public class MercedesBenz extends Car {
                     case SOUTH:
                         cars.get(j).setyCord(1);
                 }
-                cars.remove(j);
-            }
+            cars.pop();
         }
-
-    /**
-    * Method to see distance between the loading car and car to be loaded.
-    * @param car The car you want to load on the Mercedes.
-    * @return Returns a boolean, true if the car is close enough to load, false otherwise.
-     */
-
-    public boolean loadingDistance(Car car) {
-        if (Math.sqrt(Math.pow(getxCord() - car.getxCord(), 2) + Math.pow(getyCord() - car.getyCord(), 2)) <= proximity) {
-        } return true;
     }
 
+    /**
+     * Method to see distance between the loading car and car to be loaded.
+     * @param car The car you want to load on the Mercedes.
+     * @return Returns a boolean, true if the car is close enough to load, false otherwise.
+     */
+    @Override
+    public boolean loadingDistance(MotorVehicle car) {
+        if (Math.sqrt(Math.pow(getxCord() - car.getxCord(), 2) + Math.pow(getyCord() - car.getyCord(), 2)) <= proximity) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void move() {
+        super.move();
+        for (int i = 0 ; i < cars.size(); i++){
+            cars.get(i).setxCord(this.getxCord());
+            cars.get(i).setyCord(this.getyCord());
+        }
+    }
+
+    @Override
+    public void gas(double amount) {
+        if (getRampUp()) {
+            super.gas(amount);
+        }
+    }
 
     @Override
     protected double speedFactor() {
@@ -127,4 +141,5 @@ public class MercedesBenz extends Car {
     public int getCarsSize() {
         return cars.size();
     }
+
 }
