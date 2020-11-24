@@ -1,4 +1,4 @@
-public interface tilt {
+public interface Tilt {
     void tiltUp(double x);
     void tiltDown(double y);
 }

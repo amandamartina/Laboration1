@@ -122,6 +122,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
         }
     }
 
+
     @Override
     public void gas(double amount) {
         if (getRampUp()) {

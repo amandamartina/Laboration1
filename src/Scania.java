@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Scania extends MotorVehicle implements tilt {
+public class Scania extends MotorVehicle implements Tilt {
     private double currentTilt; //The tilt of the cars cargo
     private static final double INITIAL = 0; //The minimum tilt of the cargo is equal to zero degrees. This is the initial tilt of the cargo.
     private static final double MAX = 70; //The maximum tilt of the cargo is equal to 70 degrees
