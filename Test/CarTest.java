@@ -117,7 +117,7 @@ public class CarTest {
 
     }
     @Test
-    public void testDoubleLoading(){
+    public void testLoadingState(){
         mercedesBenz.stopEngine();
         mercedesBenz.putRampDown();
         mercedesBenz.loadCar(Volvo);
@@ -125,8 +125,14 @@ public class CarTest {
         assertEquals(1,mercedesBenz.getCarsSize());
         mercedesBenz.unloadCar();
         assertFalse(mercedesBenz.getObjectLoaded());
-
-
+    }
+    @Test
+    public void testDoubleLoading(){
+        mercedesBenz.stopEngine();
+        mercedesBenz.putRampDown();
+        mercedesBenz.loadCar(Volvo);
+        Benz.loadCar(Volvo);
+        assertEquals(0,Benz.getCarsSize());
     }
 
 }
