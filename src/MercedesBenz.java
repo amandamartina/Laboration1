@@ -7,21 +7,6 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     private static final int MAXWEIGHT = 8000;
     private boolean rampUp; //True if the ramp is up.
     private Stack<MotorVehicle> cars; //A stack with motorvehicle objects.
-    //private boolean ObjectLoaded;
-
-
-
-    public static void main(String[] args) {
-        MercedesBenz merca = new MercedesBenz();
-        Volvo240 volvo = new Volvo240();
-        Scania scania = new Scania();
-
-        merca.stopEngine();
-        merca.putRampDown();
-        merca.loadCar(volvo);
-        merca.putRampUp();
-        merca.startEngine();
-    }
 
     /**
      * Constructor for CarTransport objects
@@ -56,9 +41,11 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     /**
      * Method to load cars onto the Mercedes. The Mercedes loads cars if it has room, if the car is close enough,
      * if the car doesn't have a cargo and if the Mercedes has ramp down and stands still.
+     * It also checks if the car is already loaded or not
      *
      * @param car The car that you want to load on Mercedes.
      */
+    
     @Override
     public void loadCar(MotorVehicle car) {
         if (!car.getObjectLoaded())
@@ -87,9 +74,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     public void unloadCar() {
         //ska det vara - 1? kom ihåg till test.
         int j = cars.size() -1;
-
         if (!this.getRampUp()){
-            cars.get(j).unLoadObject();
                 switch (getDir()){
                     case EAST:
                         cars.get(j).setxCord(-1);
@@ -103,6 +88,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
                     case SOUTH:
                         cars.get(j).setyCord(1);
                 }
+            cars.get(j).unLoadObject();
             cars.pop();
         }
     }
@@ -120,6 +106,10 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
         return false;
     }
 
+    /**
+     * Overrides the move function, we need to do update the coordinates of the loaded cars as the
+     * Carloader moves
+     */
     @Override
     public void move() {
         super.move();
@@ -129,7 +119,10 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
         }
     }
 
-
+    /**
+     * Gas the mercedes if the ramp is up
+     * @param amount amount is a factor in incrementSpeed.
+     */
     @Override
     public void gas(double amount) {
         if (getRampUp()) {
@@ -137,15 +130,27 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
         }
     }
 
+    /**
+     * Speedfactor determines how much output we get from gas.
+     * @return enginePower times a arbitrary factor which we set to 0.1
+     */
     @Override
     protected double speedFactor() {
         return getEnginePower() * 0.1;
     }
 
+    /**
+     * Getter for ramp
+     * @return the state of the ramp, whether its up or down
+     */
     public boolean getRampUp() {
         return rampUp;
     }
 
+    /**
+     * Getter for ramp
+     * @return the state of the ramp, whether its up or down
+     */
     public int getCarsSize() {
         return cars.size();
     }

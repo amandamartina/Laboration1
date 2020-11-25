@@ -133,6 +133,13 @@ public class CarTest {
         mercedesBenz.loadCar(Volvo);
         Benz.loadCar(Volvo);
         assertEquals(0,Benz.getCarsSize());
+        mercedesBenz.unloadCar();
+        assertEquals(0,mercedesBenz.getCarsSize());
+        assertFalse(mercedesBenz.getObjectLoaded());
+        Benz.stopEngine();
+        Benz.putRampDown();
+        Benz.loadCar(Volvo);
+        assertEquals(1,Benz.getCarsSize());
     }
 
 }

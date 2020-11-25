@@ -10,7 +10,7 @@ public abstract class MotorVehicle implements Movable { //använder implementati
     private double xCord; //position on the x-axis
     private double yCord; //position on the y-axis
     private direction dir; //the direction of the car
-    private boolean objectLoaded;
+    private boolean objectLoaded; //says if an object is loaded on a car-transport or not.
 
 
     /**
@@ -175,6 +175,20 @@ public abstract class MotorVehicle implements Movable { //använder implementati
         }
     }
 
+    /**
+     * Method to change the status of an objects loading-status to true.
+     */
+    protected void loadObject() {
+        objectLoaded = true;
+    }
+
+    /**
+     * Method to change the status of an objects loading-status to false.
+     */
+    protected void unLoadObject(){
+        objectLoaded = false;
+    }
+
     public int getNrDoors() {
         return nrDoors;
     }
@@ -203,15 +217,6 @@ public abstract class MotorVehicle implements Movable { //använder implementati
         return objectLoaded;
     }
 
-    protected void loadObject() {
-        objectLoaded = true;
-    }
-
-    protected void unLoadObject(){
-        objectLoaded = false;
-    }
-
-
     public double getyCord() {
         return yCord;
     }
@@ -230,22 +235,4 @@ public abstract class MotorVehicle implements Movable { //använder implementati
     public double getWeight() {
         return weight;
     }
-    //TODO av arvid
-    //värt att göra en boolean i interface som avgör om den är uppe eller nere.
-    // gör detta i inteface
-    //använd en point här. Sätt bilens kord till mercans point. Bilen ska också ha point
-    //gå igenom lista och uppdatera koordinater. då får man overrida move i mercedes.
-    //point class?
-    //lägg till weight i parameter? klar
-    //private double weight; klar
-    //
-    //gör en loaderclass som vi kan delegera funktioner till.
-    // denna loaderklass ska ha instantsvariabler och ska innehålla funktioner till ramper.
-    // om vi gör ett object (scania eller mercedes) ska den kunna delegera till denna loaderklass!
-    //gör en loaderclass
-    //göra en egen klass som sköter loading unloading och håller lista + konstanter
-
-    //TODO det vi behöver göra
-    //Göra ett interface med tiltfunktioner som scania och mercedes ska implementera.
-    //Värt att ändra arvshierarki?
 }

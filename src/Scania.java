@@ -52,21 +52,29 @@ public class Scania extends MotorVehicle implements Tilt {
         }
     }
 
+    /**
+     * Uses a constant number to increase the speed factor
+     *
+     * @return enginePower times 0.01 times turbo
+     */
     @Override
     protected double speedFactor() {
         return getEnginePower() * 0.01;
     }
 
-    public boolean rampUp() {
-        if (currentTilt == 0) {
-            return true;
-        }
-        return false;
+    /**
+     * Method that says that the tilt is equal to zero when the cargo is down
+     *
+     */
+    public boolean tiltDown() {
+        return (currentTilt == 0);
     }
 
+    /**
+     * Getter for the current tilt
+     * @return the tilt that the cargo has
+     */
     public double getCurrentTilt() {
         return currentTilt;
     }
-
-
 }
