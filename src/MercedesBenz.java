@@ -7,6 +7,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     private static final int MAXWEIGHT = 8000;
     private boolean rampUp; //True if the ramp is up.
     private Stack<MotorVehicle> cars; //A stack with motorvehicle objects.
+    //private boolean ObjectLoaded;
 
 
 
@@ -41,6 +42,8 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
             rampUp = true;
     }
 
+
+
     /**
      * Method to put  ramp down by setting rampUp to false.
      */
@@ -58,12 +61,14 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
      */
     @Override
     public void loadCar(MotorVehicle car) {
+        if (!car.getObjectLoaded())
         if (car.getWeight() <= MAXWEIGHT) {
             if (loadingDistance(car)) {
                 if (cars.size() < loadingCapacity) {
                     if (!rampUp) {
                         car.setxCord(getxCord());
                         car.setyCord(getyCord());
+                        car.loadObject();
                         cars.push(car);
                     }
                 }
@@ -82,7 +87,9 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     public void unloadCar() {
         //ska det vara - 1? kom ihåg till test.
         int j = cars.size() -1;
+
         if (!this.getRampUp()){
+            cars.get(j).unLoadObject();
                 switch (getDir()){
                     case EAST:
                         cars.get(j).setxCord(-1);

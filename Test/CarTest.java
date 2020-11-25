@@ -14,6 +14,7 @@ public class CarTest {
     Volvo240 Volvo = new Volvo240();
     Scania scania = new Scania();
     MercedesBenz mercedesBenz = new MercedesBenz();
+    MercedesBenz Benz = new MercedesBenz();
 
     @Test
     public void testConstructor() {
@@ -115,4 +116,17 @@ public class CarTest {
         assertEquals(10,mercedesBenz.getCarsSize());
 
     }
+    @Test
+    public void testDoubleLoading(){
+        mercedesBenz.stopEngine();
+        mercedesBenz.putRampDown();
+        mercedesBenz.loadCar(Volvo);
+        assertFalse(mercedesBenz.getObjectLoaded());
+        assertEquals(1,mercedesBenz.getCarsSize());
+        mercedesBenz.unloadCar();
+        assertFalse(mercedesBenz.getObjectLoaded());
+
+
+    }
+
 }

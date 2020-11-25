@@ -10,7 +10,7 @@ public abstract class MotorVehicle implements Movable { //använder implementati
     private double xCord; //position on the x-axis
     private double yCord; //position on the y-axis
     private direction dir; //the direction of the car
-
+    private boolean objectLoaded;
 
 
     /**
@@ -198,6 +198,19 @@ public abstract class MotorVehicle implements Movable { //använder implementati
     public double getxCord() {
         return xCord;
     }
+
+    public boolean getObjectLoaded(){
+        return objectLoaded;
+    }
+
+    protected void loadObject() {
+        objectLoaded = true;
+    }
+
+    protected void unLoadObject(){
+        objectLoaded = false;
+    }
+
 
     public double getyCord() {
         return yCord;
