@@ -185,7 +185,7 @@ public abstract class MotorVehicle implements Movable { //använder implementati
     /**
      * Method to change the status of an objects loading-status to false.
      */
-    protected void unLoadObject(){
+    protected void unLoadObject() {
         objectLoaded = false;
     }
 
@@ -213,7 +213,7 @@ public abstract class MotorVehicle implements Movable { //använder implementati
         return xCord;
     }
 
-    public boolean getObjectLoaded(){
+    public boolean getObjectLoaded() {
         return objectLoaded;
     }
 
@@ -225,11 +225,12 @@ public abstract class MotorVehicle implements Movable { //använder implementati
         return dir;
     }
 
-    protected void setxCord(double x){
+    protected void setxCord(double x) {
         xCord = xCord + x;
     }
 
-    protected void setyCord(double y){ yCord = yCord + y;
+    protected void setyCord(double y) {
+        yCord = yCord + y;
     }
 
     public double getWeight() {
