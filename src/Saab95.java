@@ -12,7 +12,7 @@ public class Saab95 extends MotorVehicle {
      * Constructor for Saab95 objects
      */
     public Saab95() {
-        super(2, Color.red, 125, "Saab95", 1000, 10,10);
+        super(2, Color.red, 125, "Saab95", 1000, 10, 10);
         turboOn = false;
     }
 

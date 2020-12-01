@@ -7,6 +7,7 @@ public interface Tilt {
      * Method to make the cargo tilt up
      */
     void tiltUp(double x);
+
     /**
      * Method to make the cargo tilt down
      */

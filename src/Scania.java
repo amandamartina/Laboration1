@@ -10,7 +10,7 @@ public class Scania extends MotorVehicle implements Tilt {
      * Constructor for Scania objects
      */
     public Scania() {
-        super(2, Color.blue, 150, "Scania", 10000, 0,0);
+        super(2, Color.blue, 150, "Scania", 10000, 0, 0);
         this.currentTilt = INITIAL;
         stopEngine();
         //hårdkoda weight här så att den inte kan lasta sig själv ex weight + 5000
@@ -18,23 +18,25 @@ public class Scania extends MotorVehicle implements Tilt {
 
     /**
      * Method to change the tilt of the cargo that is higher than the original tilt.
+     *
      * @param changeTiltTo to what degree you want to set the tilt to
      */
     @Override
     public void tiltUp(double changeTiltTo) {
         if (getCurrentSpeed() == 0) {
-                    if (changeTiltTo >= currentTilt && changeTiltTo <= MAX) {
-                        currentTilt = changeTiltTo;
+            if (changeTiltTo >= currentTilt && changeTiltTo <= MAX) {
+                currentTilt = changeTiltTo;
             }
         }
     }
 
     /**
      * Same as tiltUp but to a tilt that is lower than the original tilt.
-* @param changeTiltTo to what degree you want to set the tilt to.
+     *
+     * @param changeTiltTo to what degree you want to set the tilt to.
      */
     @Override
-    public void tiltDown(double changeTiltTo){
+    public void tiltDown(double changeTiltTo) {
         if (getCurrentSpeed() == 0) {
             if (changeTiltTo <= getCurrentTilt() && changeTiltTo >= INITIAL)
                 currentTilt = changeTiltTo;
@@ -43,6 +45,7 @@ public class Scania extends MotorVehicle implements Tilt {
 
     /**
      * Method to increase the speed of the vehicle and can be used if the current tilt is zero.
+     *
      * @param amount amount is a factor in incrementSpeed.
      */
     @Override
@@ -64,7 +67,6 @@ public class Scania extends MotorVehicle implements Tilt {
 
     /**
      * Method that says that the tilt is equal to zero when the cargo is down
-     *
      */
     public boolean tiltDown() {
         return (currentTilt == 0);
@@ -72,6 +74,7 @@ public class Scania extends MotorVehicle implements Tilt {
 
     /**
      * Getter for the current tilt
+     *
      * @return the tilt that the cargo has
      */
     public double getCurrentTilt() {

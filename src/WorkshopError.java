@@ -3,6 +3,7 @@ public class WorkshopError {
     /**
      * Main-method that initiates a volvo- and saab-object and also a volvoworkshop-object.
      * Using the method leaveCarAtWorkshop to try and leave a volvo/saab at the workshop.
+     *
      * @param args argument.
      */
     public static void main(String[] args) {

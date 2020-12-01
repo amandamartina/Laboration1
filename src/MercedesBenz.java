@@ -12,7 +12,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
      * Constructor for CarTransport objects
      */
     public MercedesBenz() {
-        super(2, Color.green, 500, "MercedesBenz", 15000, 0,0);
+        super(2, Color.green, 500, "MercedesBenz", 15000, 0, 0);
         //cars = new ArrayList<>(10);
         cars = new Stack<>();
         rampUp = true;
@@ -26,7 +26,6 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
         if (getCurrentSpeed() == 0)
             rampUp = true;
     }
-
 
 
     /**
@@ -45,22 +44,22 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
      *
      * @param car The car that you want to load on Mercedes.
      */
-    
+
     @Override
     public void loadCar(MotorVehicle car) {
         if (!car.getObjectLoaded())
-        if (car.getWeight() <= MAXWEIGHT) {
-            if (loadingDistance(car)) {
-                if (cars.size() < loadingCapacity) {
-                    if (!rampUp) {
-                        car.setxCord(getxCord());
-                        car.setyCord(getyCord());
-                        car.loadObject();
-                        cars.push(car);
+            if (car.getWeight() <= MAXWEIGHT) {
+                if (loadingDistance(car)) {
+                    if (cars.size() < loadingCapacity) {
+                        if (!rampUp) {
+                            car.setxCord(getxCord());
+                            car.setyCord(getyCord());
+                            car.loadObject();
+                            cars.push(car);
+                        }
                     }
                 }
             }
-        }
     }
 
     /**
@@ -68,26 +67,25 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
      * given that the ramp is down and that the speed is equal to zero.
      * The cars that are loaded out is put down in the direction and
      * have the coordinates that the Mercedes has.
-     *
      */
     @Override
     public void unloadCar() {
         //ska det vara - 1? kom ihåg till test.
-        int j = cars.size() -1;
-        if (!this.getRampUp()){
-                switch (getDir()){
-                    case EAST:
-                        cars.get(j).setxCord(-1);
-                        break;
-                    case WEST:
-                        cars.get(j).setxCord(1);
-                        break;
-                    case NORTH:
-                        cars.get(j).setyCord(-1);
-                        break;
-                    case SOUTH:
-                        cars.get(j).setyCord(1);
-                }
+        int j = cars.size() - 1;
+        if (!this.getRampUp()) {
+            switch (getDir()) {
+                case EAST:
+                    cars.get(j).setxCord(-1);
+                    break;
+                case WEST:
+                    cars.get(j).setxCord(1);
+                    break;
+                case NORTH:
+                    cars.get(j).setyCord(-1);
+                    break;
+                case SOUTH:
+                    cars.get(j).setyCord(1);
+            }
             cars.get(j).unLoadObject();
             cars.pop();
         }
@@ -95,6 +93,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
 
     /**
      * Method to see distance between the loading car and car to be loaded.
+     *
      * @param car The car you want to load on the Mercedes.
      * @return Returns a boolean, true if the car is close enough to load, false otherwise.
      */
@@ -113,7 +112,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     @Override
     public void move() {
         super.move();
-        for (int i = 0 ; i < cars.size(); i++){
+        for (int i = 0; i < cars.size(); i++) {
             cars.get(i).setxCord(this.getxCord());
             cars.get(i).setyCord(this.getyCord());
         }
@@ -121,6 +120,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
 
     /**
      * Gas the mercedes if the ramp is up
+     *
      * @param amount amount is a factor in incrementSpeed.
      */
     @Override
@@ -132,6 +132,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
 
     /**
      * Speedfactor determines how much output we get from gas.
+     *
      * @return enginePower times a arbitrary factor which we set to 0.1
      */
     @Override
@@ -141,6 +142,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
 
     /**
      * Getter for ramp
+     *
      * @return the state of the ramp, whether its up or down
      */
     public boolean getRampUp() {
@@ -149,6 +151,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
 
     /**
      * Getter for ramp
+     *
      * @return the state of the ramp, whether its up or down
      */
     public int getCarsSize() {
