@@ -27,7 +27,7 @@ public class Workshop<C extends MotorVehicle> {
      *
      * @return which car that has been picked out (the first car that was left in the workshop)
      */
-    C pickUpCar() {
+    public C pickUpCar() {
         return carsInWorkshop.remove(0);
     }
 }

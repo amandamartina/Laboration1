@@ -31,6 +31,7 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240());
+        cc.cars.add(new Saab95());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -80,3 +81,9 @@ public class CarController {
 
 
 }
+
+// Frågor:
+// - Hur fungerar egentligen CarController? Hur ska man i main-metoden bära sig åt för att addera en till bil?
+// - Varför en privat klass i CarController?
+// - Var ska man lägga in och se till att bilen inte kör in i väggen?
+//         - I TimerListener? Hur?
