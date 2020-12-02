@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 extends MotorVehicle {
+public class Saab95 extends MotorVehicle implements Turbo {
 
     /**
      * Increases the effect of SpeedFactor
