@@ -13,7 +13,7 @@ public class CarController {
     // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
+    private final int delay = 20;
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
     private Timer timer = new Timer(delay, new TimerListener());
@@ -31,7 +31,7 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240());
-        cc.cars.add(new Saab95());
+        //cc.cars.add(new Saab95());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -52,12 +52,22 @@ public class CarController {
                 //int y = (int) Math.round(car.getPosition().getY());
                 int x = (int) Math.round(car.getxCord());
                 int y = (int) Math.round(car.getyCord());
-                if (x < 800 ) {
-                    frame.drawPanel.moveit(x, y);
-                }
-                else frame.drawPanel.moveit(-x,y);
-                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.moveit(x, y);
                 frame.drawPanel.repaint();
+                if (x > 700){
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+                if (x < 0){
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+
+
+
+
+                // repaint() calls the paintComponent method of the panel
+
             }
         }
     }
@@ -81,9 +91,3 @@ public class CarController {
 
 
 }
-
-// Frågor:
-// - Hur fungerar egentligen CarController? Hur ska man i main-metoden bära sig åt för att addera en till bil?
-// - Varför en privat klass i CarController?
-// - Var ska man lägga in och se till att bilen inte kör in i väggen?
-//         - I TimerListener? Hur?

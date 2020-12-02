@@ -61,7 +61,7 @@ public class CarView extends JFrame{
                 new SpinnerNumberModel(0, //initial value
                         0, //min
                         100, //max
-                        1);//step
+                        10);//step
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -130,7 +130,8 @@ public class CarView extends JFrame{
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //gasar vi ska saab få ut mer effekt än tidigare
+                //Saab95 saab = (Saab95) carC;
+                //saab.gas(10);
             }
         });
         turboOffButton.addActionListener(new ActionListener() {
