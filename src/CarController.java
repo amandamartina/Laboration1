@@ -88,6 +88,7 @@ public class CarController {
             car.brake(brake);
         }
     }
-
-
 }
+
+// Behöver göra: Implementera så att turboOn endast gäller för bilar som implementerat turbi-interfacet
+// Behöver upprätta koordinater för varje car-object, dvs. dvs. skapa en lista med koordinater, (skapa en point-klass?)
