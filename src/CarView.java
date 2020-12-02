@@ -17,6 +17,7 @@ public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
 
+
     // The controller member
     CarController carC;
 
@@ -130,8 +131,7 @@ public class CarView extends JFrame{
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Saab95 saab = (Saab95) carC;
-                //saab.gas(10);
+                carC.turboOn();
             }
         });
         turboOffButton.addActionListener(new ActionListener() {
