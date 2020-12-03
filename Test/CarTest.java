@@ -58,12 +58,12 @@ public class CarTest {
 
     @Test
     public void testCargoTiltUpAndDown() {
-        scania.tiltUp(30);
-        assertEquals(30, scania.getCurrentTilt());
-        scania.tiltDown(20);
-        assertEquals(20, scania.getCurrentTilt());
-        scania.tiltDown(-10);
-        assertNotEquals(-10, scania.getCurrentTilt());
+        scania.incrementTilt();
+        assertEquals(5, scania.getCurrentTilt());
+        scania.decrementTilt();
+        assertEquals(0, scania.getCurrentTilt());
+        scania.tiltDown();
+        assertNotEquals(0, scania.getCurrentTilt());
     }
     @Test
     public void testMercedes(){

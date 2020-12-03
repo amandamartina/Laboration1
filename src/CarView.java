@@ -18,6 +18,10 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
 
+    public int getX() {
+        return X;
+    }
+
     // The controller member
     CarController carC;
 
@@ -119,7 +123,7 @@ public class CarView extends JFrame{
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(1);
+
             }
         });
         stopButton.addActionListener(new ActionListener() {
@@ -137,19 +141,20 @@ public class CarView extends JFrame{
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //gör så att saab får samma effekt från gas som tidigare
-            }
-        });
+                carC.turboOff();
+        }});
+
         liftBedButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
+                carC.scaniaLiftBed();
+                }
 
-            }
         });
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                carC.lowerLiftBed();
             }
         });
 

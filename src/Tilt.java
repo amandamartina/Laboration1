@@ -6,10 +6,10 @@ public interface Tilt {
     /**
      * Method to make the cargo tilt up
      */
-    void tiltUp(double x);
-
+    void incrementTilt();
     /**
      * Method to make the cargo tilt down
      */
-    void tiltDown(double y);
+    void decrementTilt();
+
 }

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Stack;
 
 public class MercedesBenz extends MotorVehicle implements Ramp, Load {
@@ -157,4 +158,8 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
         return cars.size();
     }
 
+    @Override
+    public BufferedImage getCarImage() {
+        return null;
+    }
 }

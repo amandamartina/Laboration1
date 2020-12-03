@@ -24,7 +24,9 @@ public class CarController {
     //ArrayList<Acar> cars = new ArrayList<>();
     ArrayList<MotorVehicle> cars = new ArrayList<>();
 
+
     //methods:
+
 
     public static void main(String[] args) {
         // Instance of this class
@@ -33,6 +35,7 @@ public class CarController {
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -46,15 +49,12 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            //for (Acars car : cars){
             for (MotorVehicle car : cars) {
                 car.move();
-                //int x = (int) Math.round(car.getPosition().getX());
-                //int y = (int) Math.round(car.getPosition().getY());
                 int x = (int) Math.round(car.getxCord());
                 int y = (int) Math.round(car.getyCord());
-                frame.drawPanel.moveit(x, y);
                 frame.drawPanel.repaint();
+
                 if (x > 700){
                     car.turnLeft();
                     car.turnLeft();
@@ -63,7 +63,7 @@ public class CarController {
                     car.turnLeft();
                     car.turnLeft();
                 }
-                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.moveit(cars);
             }
         }
     }
@@ -88,10 +88,34 @@ public class CarController {
     void turboOn(){
         for (MotorVehicle car : cars){
             if (car instanceof Turbo){
-                car.gas(10);
+                ((Turbo) car).setTurboOn();
             }
         }
     }
+
+    void turboOff(){
+        for (MotorVehicle car : cars){
+            if (car instanceof Turbo){
+                ((Turbo) car).setTurboOff();
+            }
+        }
+    }
+    void scaniaLiftBed(){
+        for (MotorVehicle car : cars){
+            if (car instanceof Tilt){
+                ((Tilt) car).incrementTilt();
+            }
+        }
+    }
+
+    void lowerLiftBed(){
+        for (MotorVehicle car : cars){
+            if (car instanceof Tilt){
+                ((Tilt) car).decrementTilt();
+            }
+        }
+    }
+
 
 
 }

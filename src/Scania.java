@@ -1,45 +1,54 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
-public class Scania extends MotorVehicle implements Tilt {
+public class Scania extends MotorVehicle implements Tilt, CarImages {
     private double currentTilt; //The tilt of the cars cargo
     private static final double INITIAL = 0; //The minimum tilt of the cargo is equal to zero degrees. This is the initial tilt of the cargo.
     private static final double MAX = 70; //The maximum tilt of the cargo is equal to 70 degrees
-
+    private static final int INCREMENT = 5;
+    private BufferedImage scaniaImage;
 
     /**
      * Constructor for Scania objects
      */
     public Scania() {
-        super(2, Color.blue, 150, "Scania", 10000, 0, 0);
+        super(2, Color.blue, 150, "Scania", 10000, 0, 200);
         this.currentTilt = INITIAL;
         stopEngine();
-        //hårdkoda weight här så att den inte kan lasta sig själv ex weight + 5000
+        try {
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
      * Method to change the tilt of the cargo that is higher than the original tilt.
      *
-     * @param changeTiltTo to what degree you want to set the tilt to
+     *
      */
     @Override
-    public void tiltUp(double changeTiltTo) {
+    public void incrementTilt() {
         if (getCurrentSpeed() == 0) {
-            if (changeTiltTo >= currentTilt && changeTiltTo <= MAX) {
-                currentTilt = changeTiltTo;
+            if (currentTilt < MAX) {
+                currentTilt += INCREMENT;
             }
         }
     }
 
+
     /**
      * Same as tiltUp but to a tilt that is lower than the original tilt.
      *
-     * @param changeTiltTo to what degree you want to set the tilt to.
+     *
      */
     @Override
-    public void tiltDown(double changeTiltTo) {
+    public void decrementTilt() {
         if (getCurrentSpeed() == 0) {
-            if (changeTiltTo <= getCurrentTilt() && changeTiltTo >= INITIAL)
-                currentTilt = changeTiltTo;
+            if (currentTilt > INITIAL)
+                currentTilt -= INCREMENT;
         }
     }
 
@@ -79,5 +88,10 @@ public class Scania extends MotorVehicle implements Tilt {
      */
     public double getCurrentTilt() {
         return currentTilt;
+    }
+
+    @Override
+    public BufferedImage getCarImage() {
+        return scaniaImage;
     }
 }
