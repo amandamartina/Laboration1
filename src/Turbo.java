@@ -1,5 +1,6 @@
 public interface Turbo {
     boolean turboOn = false;
+
     /**
      * Setting if turbo is on
      */

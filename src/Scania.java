@@ -26,8 +26,6 @@ public class Scania extends MotorVehicle implements Tilt, CarImages {
 
     /**
      * Method to change the tilt of the cargo that is higher than the original tilt.
-     *
-     *
      */
     @Override
     public void incrementTilt() {
@@ -41,8 +39,6 @@ public class Scania extends MotorVehicle implements Tilt, CarImages {
 
     /**
      * Same as tiltUp but to a tilt that is lower than the original tilt.
-     *
-     *
      */
     @Override
     public void decrementTilt() {

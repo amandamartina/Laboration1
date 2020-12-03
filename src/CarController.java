@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
+ * This class represents the Controller part in the MVC pattern.
+ * It's responsibilities is to listen to the View and responds in a appropriate manner by
+ * modifying the model state and the updating the view.
  */
 
 public class CarController {
@@ -45,8 +45,8 @@ public class CarController {
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+     * view to update its images. Change this method to your needs.
+     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (MotorVehicle car : cars) {
@@ -55,11 +55,11 @@ public class CarController {
                 int y = (int) Math.round(car.getyCord());
                 frame.drawPanel.repaint();
 
-                if (x > 700){
+                if (x > 700) {
                     car.turnLeft();
                     car.turnLeft();
                 }
-                if (x < 0){
+                if (x < 0) {
                     car.turnLeft();
                     car.turnLeft();
                 }
@@ -73,49 +73,47 @@ public class CarController {
         double gas = ((double) amount) / 100;
         //for (ACar car : cars
         for (MotorVehicle car : cars
-                ) {
+        ) {
             car.gas(gas);
         }
     }
 
-    void brake(int amount){
+    void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (MotorVehicle car : cars){
+        for (MotorVehicle car : cars) {
             car.brake(brake);
         }
     }
 
-    void turboOn(){
-        for (MotorVehicle car : cars){
-            if (car instanceof Turbo){
+    void turboOn() {
+        for (MotorVehicle car : cars) {
+            if (car instanceof Turbo) {
                 ((Turbo) car).setTurboOn();
             }
         }
     }
 
-    void turboOff(){
-        for (MotorVehicle car : cars){
-            if (car instanceof Turbo){
+    void turboOff() {
+        for (MotorVehicle car : cars) {
+            if (car instanceof Turbo) {
                 ((Turbo) car).setTurboOff();
             }
         }
     }
-    void scaniaLiftBed(){
-        for (MotorVehicle car : cars){
-            if (car instanceof Tilt){
+
+    void scaniaLiftBed() {
+        for (MotorVehicle car : cars) {
+            if (car instanceof Tilt) {
                 ((Tilt) car).incrementTilt();
             }
         }
     }
 
-    void lowerLiftBed(){
-        for (MotorVehicle car : cars){
-            if (car instanceof Tilt){
+    void lowerLiftBed() {
+        for (MotorVehicle car : cars) {
+            if (car instanceof Tilt) {
                 ((Tilt) car).decrementTilt();
             }
         }
     }
-
-
-
 }

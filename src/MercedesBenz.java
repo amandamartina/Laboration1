@@ -101,8 +101,7 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     @Override
     public boolean loadingDistance(MotorVehicle car) {
         return (Math.sqrt(Math.pow(getxCord() - car.getxCord(), 2) + Math.pow(getyCord() - car.getyCord(), 2)) <= proximity);
-        }
-
+    }
 
 
     /**

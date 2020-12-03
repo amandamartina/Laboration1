@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Volvo240 extends MotorVehicle implements CarImages{
+public class Volvo240 extends MotorVehicle implements CarImages {
 
     /**
      * Increases the speed with a factor 1.25
@@ -17,10 +17,9 @@ public class Volvo240 extends MotorVehicle implements CarImages{
      */
     public Volvo240() {
         super(4, Color.black, 300, "Volvo240", 1000, 0, 0);
-        try{
+        try {
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }

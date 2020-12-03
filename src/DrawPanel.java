@@ -9,7 +9,7 @@ import javax.swing.*;
 
 // This panel represent the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel {
 
     // Just a single image, TODO: Generalize
 
@@ -51,8 +51,8 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (MotorVehicle car : cars){
-            g.drawImage(car.getCarImage(),(int) car.getxCord(),(int) car.getyCord(),null);
+        for (MotorVehicle car : cars) {
+            g.drawImage(car.getCarImage(), (int) car.getxCord(), (int) car.getyCord(), null);
         }
     }
 
