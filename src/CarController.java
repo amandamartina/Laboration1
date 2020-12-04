@@ -116,4 +116,18 @@ public class CarController {
             }
         }
     }
+
+    void startAllCars(){
+        for (MotorVehicle car : cars){
+                car.startEngine();
+        }
+    }
+
+    void stopAllCars(){
+        for (MotorVehicle car : cars){
+            car.stopEngine();
+        }
+    }
+
+
 }

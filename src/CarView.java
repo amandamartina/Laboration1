@@ -122,13 +122,13 @@ public class CarView extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                carC.startAllCars();
             }
         });
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(100);
+                carC.stopAllCars();
             }
         });
         turboOnButton.addActionListener(new ActionListener() {
