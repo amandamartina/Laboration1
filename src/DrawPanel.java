@@ -12,9 +12,14 @@ import javax.swing.*;
 public class DrawPanel extends JPanel {
 
     // Just a single image, TODO: Generalize
-
+    CarImages carImage;
     ArrayList<MotorVehicle> cars = new ArrayList<>();
 
+
+
+    public BufferedImage getCarImage() {
+        return null;
+    }
 
     // TODO: Make this genereal for all cars
     void moveit(ArrayList<MotorVehicle> vehicles) {
@@ -55,5 +60,14 @@ public class DrawPanel extends JPanel {
             g.drawImage(car.getCarImage(), (int) car.getxCord(), (int) car.getyCord(), null);
         }
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (MotorVehicle car : cars) {
+            g.drawImage(car.getCarImage(), (int) car.getxCord(), (int) car.getyCord(), null);
+        }
+    }
+
 
 }

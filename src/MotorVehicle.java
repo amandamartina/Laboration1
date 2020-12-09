@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class MotorVehicle implements Movable, CarImages { //använder implementationsarv för att vi vill kunna använda instansvariablerna i volvo och saab
+public abstract class MotorVehicle implements Movable { //använder implementationsarv för att vi vill kunna använda instansvariablerna i volvo och saab
     private double weight;
     private final int nrDoors; // Number of doors on the car
     private final String modelName; // The car model name
@@ -238,6 +238,10 @@ public abstract class MotorVehicle implements Movable, CarImages { //använder i
         return weight;
     }
 
-    @Override
-    public abstract BufferedImage getCarImage();
+//    @Override
+//    public abstract BufferedImage getCarImage();
+
+    public String getModelName() {
+        return modelName;
+    }
 }

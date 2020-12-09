@@ -157,8 +157,9 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
         return cars.size();
     }
 
-    @Override
-    public BufferedImage getCarImage() {
-        return null;
-    }
+    //    @Override
+//    public BufferedImage getCarImage() {
+//        return null;
+//    }
+
 }

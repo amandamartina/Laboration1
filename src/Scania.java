@@ -3,12 +3,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Scania extends MotorVehicle implements Tilt, CarImages {
+public class Scania extends MotorVehicle implements Tilt{//CarImages
     private double currentTilt; //The tilt of the cars cargo
     private static final double INITIAL = 0; //The minimum tilt of the cargo is equal to zero degrees. This is the initial tilt of the cargo.
     private static final double MAX = 70; //The maximum tilt of the cargo is equal to 70 degrees
     private static final int INCREMENT = 5;
-    private BufferedImage scaniaImage;
+    //private BufferedImage scaniaImage;
 
     /**
      * Constructor for Scania objects
@@ -17,11 +17,11 @@ public class Scania extends MotorVehicle implements Tilt, CarImages {
         super(2, Color.blue, 150, "Scania", 10000, 0, 200);
         this.currentTilt = INITIAL;
         stopEngine();
-        try {
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+       // try {
+         //   scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+       // } catch (IOException ex) {
+         //   ex.printStackTrace();
+        //}
     }
 
     /**
@@ -86,8 +86,8 @@ public class Scania extends MotorVehicle implements Tilt, CarImages {
         return currentTilt;
     }
 
-    @Override
-    public BufferedImage getCarImage() {
-        return scaniaImage;
-    }
+    //@Override
+    //public BufferedImage getCarImage() {
+      //  return scaniaImage;
+    //}
 }

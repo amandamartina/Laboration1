@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Saab95 extends MotorVehicle implements Turbo, CarImages {
+public class Saab95 extends MotorVehicle implements Turbo{ //CarImages
 
     /**
      * Increases the effect of SpeedFactor
      */
 
     private boolean turboOn;
-    BufferedImage saabImage;
+    //BufferedImage saabImage;
 
 
     /**
@@ -19,11 +19,11 @@ public class Saab95 extends MotorVehicle implements Turbo, CarImages {
     public Saab95() {
         super(2, Color.red, 300, "Saab95", 1000, 0, 100);
         turboOn = false;
-        try {
-            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+       // try {
+         //   saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+        //} catch (IOException ex) {
+          //  ex.printStackTrace();
+        //}
     }
 
     /**
@@ -40,10 +40,10 @@ public class Saab95 extends MotorVehicle implements Turbo, CarImages {
         turboOn = false;
     }
 
-    @Override
-    public BufferedImage getCarImage() {
-        return saabImage;
-    }
+    //@Override
+    //public BufferedImage getCarImage() {
+      //  return saabImage;
+    //}
 
     /**
      * The engine power gets larger if the variable turboOn is used.
