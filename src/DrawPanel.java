@@ -60,14 +60,4 @@ public class DrawPanel extends JPanel {
             g.drawImage(car.getCarImage(), (int) car.getxCord(), (int) car.getyCord(), null);
         }
     }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        for (MotorVehicle car : cars) {
-            g.drawImage(car.getCarImage(), (int) car.getxCord(), (int) car.getyCord(), null);
-        }
-    }
-
-
 }

@@ -44,13 +44,6 @@ public class CarImages {
         return map;
     }
 
-
-    //    public void putElement(cm.cars.size){
-//   for() {
-//       map.put(modelName, image);
-//   }
-//}
-
     public BufferedImage getCarImage(){
         return null;
     }
