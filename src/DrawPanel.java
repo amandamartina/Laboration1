@@ -15,8 +15,6 @@ public class DrawPanel extends JPanel {
     CarImages carImage;
     ArrayList<MotorVehicle> cars = new ArrayList<>();
 
-
-
     public BufferedImage getCarImage() {
         return null;
     }
@@ -57,7 +55,7 @@ public class DrawPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (MotorVehicle car : cars) {
-            g.drawImage(car.getCarImage(), (int) car.getxCord(), (int) car.getyCord(), null);
+            g.drawImage(carImage.getCarImage(car), (int) car.getxCord(), (int) car.getyCord(), null);
         }
     }
 }

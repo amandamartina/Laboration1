@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class CarController {
     CarModel carModel;
 
-    public CarController(CarModel model){
+    public CarController(CarModel model) {
         this.carModel = model;
     }
     // member fields:
@@ -54,7 +54,6 @@ public class CarController {
             }
         }
     }
-
 
 
     // Calls the gas method for each car once
@@ -106,14 +105,14 @@ public class CarController {
         }
     }
 
-    void startAllCars(){
-        for (MotorVehicle car : cars){
-                car.startEngine();
+    void startAllCars() {
+        for (MotorVehicle car : cars) {
+            car.startEngine();
         }
     }
 
-    void stopAllCars(){
-        for (MotorVehicle car : cars){
+    void stopAllCars() {
+        for (MotorVehicle car : cars) {
             car.stopEngine();
         }
     }
