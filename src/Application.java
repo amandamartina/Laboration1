@@ -4,6 +4,14 @@ import java.util.List;
 
 public class Application {
 
+    public static List<MotorVehicle> initCars() {
+        List<MotorVehicle> cars = new ArrayList<>();
+        cars.add(CarFactory.createVolvo());
+        cars.add(CarFactory.createSaab());
+        cars.add(CarFactory.createScania());
+        return cars;
+    }
+
     public static void main(String[] args) {
         // Instance of this class
         String framename = "CarSim 1.0";

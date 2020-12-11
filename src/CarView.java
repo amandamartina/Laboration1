@@ -11,7 +11,7 @@ import java.awt.*;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame {
+public class CarView extends JFrame implements Observer {
     private static final int X = 800;
     private static final int Y = 800;
 
@@ -111,4 +111,10 @@ public class CarView extends JFrame {
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    @Override
+    public void actOnUpdate() {
+
+    }
 }
+
