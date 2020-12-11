@@ -10,10 +10,67 @@ import java.util.ArrayList;
  */
 
 public class CarController {
-    CarModel carModel;
+    final CarModel carModel;
+    final CarView carView;
 
-    public CarController(CarModel model) {
+    public CarController(CarModel model, CarView view) {
         this.carModel = model;
+        this.carView = view;
+
+        // This actionListener is for the gas button only
+        // TODO: Create more for each component as necessary
+        carView.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.gas();
+            }
+
+        });
+        carView.brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.brake();
+            }
+        });
+
+        carView.startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.startAllCars();
+            }
+        });
+        carView.stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.stopAllCars();
+            }
+        });
+        carView.turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.turboOn();
+            }
+        });
+        carView.turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.turboOff();
+            }
+        });
+
+        carView.liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.scaniaLiftBed();
+            }
+
+        });
+        carView.lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.lowerLiftBed();
+            }
+        });
     }
     // member fields:
 
@@ -23,9 +80,6 @@ public class CarController {
     // each step between delays.
     protected Timer timer = new Timer(delay, new CarController.TimerListener());
 
-
-    // The frame that represents this instance View of the MVC pattern
-    CarView frame;
     // A list of cars, modify if needed
     //ArrayList<Acar> cars = new ArrayList<>();
     ArrayList<MotorVehicle> cars = new ArrayList<>();
@@ -40,7 +94,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getxCord());
                 int y = (int) Math.round(car.getyCord());
-                frame.drawPanel.repaint();
+                carView.drawPanel.repaint();
 
                 if (x > 700) {
                     car.turnLeft();
@@ -50,70 +104,8 @@ public class CarController {
                     car.turnLeft();
                     car.turnLeft();
                 }
-                frame.drawPanel.moveit(cars); //borde ta bort
+                carView.drawPanel.moveit(cars); //borde ta bort
             }
-        }
-    }
-
-
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        //for (ACar car : cars
-        for (MotorVehicle car : cars
-        ) {
-            car.gas(gas);
-        }
-    }
-
-    void brake(int amount) {
-        double brake = ((double) amount) / 100;
-        for (MotorVehicle car : cars) {
-            car.brake(brake);
-        }
-    }
-
-    void turboOn() {
-        for (MotorVehicle car : cars) {
-            if (car instanceof Turbo) {
-                ((Turbo) car).setTurboOn();
-            }
-        }
-    }
-
-    void turboOff() {
-        for (MotorVehicle car : cars) {
-            if (car instanceof Turbo) {
-                ((Turbo) car).setTurboOff();
-            }
-        }
-    }
-
-    void scaniaLiftBed() {
-        for (MotorVehicle car : cars) {
-            if (car instanceof Tilt) {
-                ((Tilt) car).incrementTilt();
-            }
-        }
-    }
-
-    void lowerLiftBed() {
-        for (MotorVehicle car : cars) {
-            if (car instanceof Tilt) {
-                ((Tilt) car).decrementTilt();
-            }
-        }
-    }
-
-    void startAllCars() {
-        for (MotorVehicle car : cars) {
-            car.startEngine();
-        }
-    }
-
-    void stopAllCars() {
-        for (MotorVehicle car : cars) {
-            car.stopEngine();
         }
     }
 }

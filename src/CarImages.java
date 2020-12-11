@@ -9,7 +9,7 @@ import java.io.IOException;
 import static javax.imageio.ImageIO.*;
 
 public class CarImages {
-    Map<String, BufferedImage> map = new HashMap<>();
+    Map<MotorVehicle, BufferedImage> map = new HashMap<>();
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
@@ -22,7 +22,7 @@ public class CarImages {
                 e.printStackTrace();
             }
         }
-        map.put("Volvo240", volvoImage);
+        map.put(new Volvo240(), volvoImage);
 
         {
             try {
@@ -31,7 +31,7 @@ public class CarImages {
                 e.printStackTrace();
             }
         }
-        map.put("Saab95", saabImage);
+        map.put(new Saab95(), saabImage);
 
         {
             try {
@@ -40,7 +40,7 @@ public class CarImages {
                 e.printStackTrace();
             }
         }
-        map.put("Scania", scaniaImage);
+        map.put(new Scania(), scaniaImage);
     }
 
     public BufferedImage getCarImage(MotorVehicle car) {
