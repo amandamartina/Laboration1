@@ -50,7 +50,7 @@ public class CarController {
                     car.turnLeft();
                     car.turnLeft();
                 }
-                frame.drawPanel.moveit(cars);
+                frame.drawPanel.moveit(cars); //borde ta bort
             }
         }
     }

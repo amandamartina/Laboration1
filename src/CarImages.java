@@ -15,31 +15,29 @@ public class CarImages {
     BufferedImage scaniaImage;
 
     public CarImages(){
-        map.put("Volvo240",volvoImage);
         {
             try {
                 volvoImage = read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        map.put("Saab95",saabImage);
+        }map.put("Volvo240",volvoImage);
+        
         {
             try {
                 saabImage = read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }map.put("Saab95",saabImage);
 
-        map.put("Scania",scaniaImage);
         {
             try {
                 scaniaImage = read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }map.put("Scania",scaniaImage);
     }
 
     public Map<String, BufferedImage> getMap() {
