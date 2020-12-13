@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarModel {
+public class CarModel { //x och y-koordinaterna ska uppdateras i modellen, viewen ska vara dum
+    //observern: du ändrar något i modellen sen ska du skicka det till alla som lyssnar (ska skicka bilen för att få x- och y-koordinaten)
     ArrayList<MotorVehicle> cars = new ArrayList<>();
     ArrayList<Observer> listeners = new ArrayList<>();
-    int gasAmount = 100;
-    int breakAmount = 100;
+    int gasAmount = 50;
+    int breakAmount = 50;
 
     public CarModel (List<MotorVehicle> cars) {
         this.cars.addAll(cars);
@@ -16,7 +17,7 @@ public class CarModel {
     }
 
     public void notifyListeners() {
-
+        //kolla sliden
     }
 
     public void addCar(MotorVehicle car) {

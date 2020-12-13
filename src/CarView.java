@@ -22,7 +22,7 @@ public class CarView extends JFrame implements Observer {
 
     // The controller member
 
-    DrawPanel drawPanel = new DrawPanel(X, Y - 240);
+    DrawPanel drawPanel = new DrawPanel(X, Y - 240); //skapar drawPanel
 
     JPanel controlPanel = new JPanel();
 
@@ -114,7 +114,7 @@ public class CarView extends JFrame implements Observer {
 
     @Override
     public void actOnUpdate() {
-
+        //här ska vi göra det som ska ändras med updatesen --> "ändra detta i DrawPanel" (aka fyll på ArratList:en)
     }
 }
 
