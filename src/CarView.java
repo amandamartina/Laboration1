@@ -7,7 +7,7 @@ import javax.swing.*;
 public class CarView extends JPanel implements Observer {
 
     // Just a single image, TODO: Generalize
-    private CarModel carModel;
+    private ListAccessor carModel;
     private Map<MotorVehicle, CarImages> imageMap = new HashMap<>();
 
     // Initializes the panel and reads the images
@@ -26,8 +26,6 @@ public class CarView extends JPanel implements Observer {
         imageMap = tempMap;
     }
 
-    // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -7,13 +7,28 @@ public class CarModel implements ButtonsAccessor, ListAccessor{
 
     public CarModel() {
     }
+    public void update() {
+        for (MotorVehicle car : cars) {
+            car.move();
+            int x = (int) Math.round(car.getxCord());
+            int y = (int) Math.round(car.getyCord());
+
+            if (x < 0 || x > 700) {
+                car.turnLeft();
+                car.turnLeft();
+            }
+        }
+        notifyListeners();
+    }
 
     public void addListener(Observer l) {
         listeners.add(l);
     }
 
     public void notifyListeners() {
-        //kolla sliden
+        for (Observer observer : listeners) {
+            observer.actOnUpdate();
+        }
     }
 
     public void addCar(MotorVehicle car) {
@@ -54,7 +69,7 @@ public class CarModel implements ButtonsAccessor, ListAccessor{
         }
     }
 
-    void scaniaLiftBed() {
+    public void scaniaLiftBed() {
         for (MotorVehicle car : cars) {
             if (car instanceof Tilt) {
                 ((Tilt) car).incrementTilt();
@@ -62,7 +77,7 @@ public class CarModel implements ButtonsAccessor, ListAccessor{
         }
     }
 
-    void lowerLiftBed() {
+    public void lowerLiftBed() {
         for (MotorVehicle car : cars) {
             if (car instanceof Tilt) {
                 ((Tilt) car).decrementTilt();
@@ -70,15 +85,19 @@ public class CarModel implements ButtonsAccessor, ListAccessor{
         }
     }
 
-    void startAllCars() {
+    public void startAllCars() {
         for (MotorVehicle car : cars) {
             car.startEngine();
         }
     }
 
-    void stopAllCars() {
+    public void stopAllCars() {
         for (MotorVehicle car : cars) {
             car.stopEngine();
         }
+    }
+
+    public List<MotorVehicle> getCars() {
+        return cars;
     }
 }

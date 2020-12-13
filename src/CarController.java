@@ -155,22 +155,7 @@ public class CarController extends JPanel {
      * */
     public class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (MotorVehicle car : cars) {
-                car.move();
-                int x = (int) Math.round(car.getxCord());
-                int y = (int) Math.round(car.getyCord());
-                carView.drawPanel.repaint();
-
-                if (x > 700) {
-                    car.turnLeft();
-                    car.turnLeft();
-                }
-                if (x < 0) {
-                    car.turnLeft();
-                    car.turnLeft();
-                }
-                carView.drawPanel.moveit(cars); //borde ta bort
-            }
+            carModel.update();
         }
     }
 }
