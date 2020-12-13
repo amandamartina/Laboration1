@@ -3,6 +3,7 @@ import java.util.List;
 
 public class CarModel { //x och y-koordinaterna ska uppdateras i modellen, viewen ska vara dum
     //observern: du ändrar något i modellen sen ska du skicka det till alla som lyssnar (ska skicka bilen för att få x- och y-koordinaten)
+    //test
     ArrayList<MotorVehicle> cars = new ArrayList<>();
     ArrayList<Observer> listeners = new ArrayList<>();
     int gasAmount = 50;
