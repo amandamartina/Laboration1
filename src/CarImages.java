@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.nio.Buffer;
 import java.util.ArrayList;
@@ -9,48 +10,20 @@ import java.io.IOException;
 import static javax.imageio.ImageIO.*;
 
 public class CarImages {
-    Map<MotorVehicle, BufferedImage> map = new HashMap<>();
     BufferedImage image;
-    BufferedImage volvoImage;
-    BufferedImage saabImage;
-    BufferedImage scaniaImage;
 
-    public CarImages() {
+    public CarImages(MotorVehicle car) {
         {
             try {
-                volvoImage = read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+                image = read(DrawPanel.class.getResourceAsStream("pics/" + car.getModelName() + ".jpg"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        map.put(new Volvo240(), volvoImage);
-
-        {
-            try {
-                saabImage = read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        map.put(new Saab95(), saabImage);
-
-        {
-            try {
-                scaniaImage = read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        map.put(new Scania(), scaniaImage);
     }
 
-    public BufferedImage getCarImage(MotorVehicle car) {
-        if (car instanceof Volvo240) {
-            return volvoImage;
-        } else if (car instanceof Saab95) {
-            return saabImage;
-        } else {
-            return scaniaImage;
-        }
+    public void drawCar(MotorVehicle car, Graphics g) {
+        g.drawImage(image, (int) car.getxCord(), (int) car.getyCord(), null);
     }
 }
+

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,18 +15,28 @@ public class Application {
 
     public static void main(String[] args) {
         // Instance of this class
-        String framename = "CarSim 1.0";
+        JFrame jFrame = new JFrame("CarSim 1.0");
+
+        jFrame.setPreferredSize(new Dimension(800, 800));
+        jFrame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+
+        //String framename = "CarSim 1.0";
         CarModel cm = new CarModel(initCars());
-        CarView cv = new CarView(framename);
-        CarController cc = new CarController(cm, cv);
-        ;
-        //cm.cars.add(new Volvo240());
-        //cm.cars.add(new Saab95());
-        //cm.cars.add(new Scania());
+        CarView cv = new CarView(cm);
+        cm.addListener(cv.getObserver());
+        CarController cc = new CarController(cm);
 
+        // Make the frame pack all it's components by respecting the sizes if possible.
+        jFrame.pack();
 
-        // Start a new view and send a reference of self
-        //cc.frame = new CarView("CarSim 1.0", cc);
+        // Get the computer screen resolution
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        // Center the frame
+        jFrame.setLocation(dim.width / 2 - jFrame.getSize().width / 2, dim.height / 2 - jFrame.getSize().height / 2);
+        // Make the frame visible
+        jFrame.setVisible(true);
+        // Make sure the frame exits when "x" is pressed
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Start the timer
         cc.timer.start();

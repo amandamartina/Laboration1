@@ -9,7 +9,7 @@ public class CarModel { //x och y-koordinaterna ska uppdateras i modellen, viewe
     int gasAmount = 50;
     int breakAmount = 50;
 
-    public CarModel (List<MotorVehicle> cars) {
+    public CarModel(List<MotorVehicle> cars) {
         this.cars.addAll(cars);
     }
 
@@ -36,7 +36,7 @@ public class CarModel { //x och y-koordinaterna ska uppdateras i modellen, viewe
     }
 
     void brake() {
-        double brake = (( double)breakAmount) / 100;
+        double brake = ((double) breakAmount) / 100;
         for (MotorVehicle car : cars) {
             car.brake(brake);
         }

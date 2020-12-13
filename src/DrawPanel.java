@@ -2,18 +2,19 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 // This panel represent the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel {
+public class DrawPanel extends JPanel implements Observer {
+
 
     // Just a single image, TODO: Generalize
-    CarImages carImage;
-    ArrayList<MotorVehicle> cars = new ArrayList<>();
+    private CarModel carModel;
+    private Map<MotorVehicle, CarImages> imageMap = new HashMap<>();
 
     public BufferedImage getCarImage() {
         return null;
@@ -25,10 +26,18 @@ public class DrawPanel extends JPanel {
     }
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(CarModel carModel, int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
+    }
+
+    public void updateImages() {
+        Map<MotorVehicle, CarImages> tempMap = new HashMap<>();
+        for (MotorVehicle car : carModel.cars) {
+            tempMap.put(car, new CarImages(car));
+        }
+        imageMap = tempMap;
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
@@ -39,6 +48,12 @@ public class DrawPanel extends JPanel {
         for (MotorVehicle car : cars) {
             g.drawImage(carImage.getCarImage(car), (int) car.getxCord(), (int) car.getyCord(), null);
         }
+    }
+
+    @Override
+    public void actOnUpdate() {
+        updateImages();
+        repaint();
     }
 }
 
