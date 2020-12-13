@@ -10,6 +10,7 @@ import static javax.imageio.ImageIO.*;
 
 public class CarImages {
     Map<MotorVehicle, BufferedImage> map = new HashMap<>();
+    BufferedImage image;
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
