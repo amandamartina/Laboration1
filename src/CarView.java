@@ -20,7 +20,7 @@ public class CarView extends JPanel implements Observer {
 
     public void updateImages() {
         Map<MotorVehicle, CarImages> tempMap = new HashMap<>();
-        for (MotorVehicle car : carModel.cars) {
+        for (MotorVehicle car : carModel.getCars()) {
             tempMap.put(car, new CarImages(car));
         }
         imageMap = tempMap;
