@@ -3,10 +3,10 @@ import java.awt.*;
 
 public class Application {
 
-    public static void initCars(CarModel cm) {
-        cm.addCar(CarFactory.createVolvo());
-        cm.addCar(CarFactory.createSaab());
-        cm.addCar(CarFactory.createScania());
+    public static void initCars(CarModel carModel) {
+        carModel.addCar(CarFactory.createVolvo());
+        carModel.addCar(CarFactory.createSaab());
+        carModel.addCar(CarFactory.createScania());
     }
 
     public static void main(String[] args) {
@@ -17,15 +17,15 @@ public class Application {
         jFrame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         //String framename = "CarSim 1.0";
-        CarModel cm = new CarModel();
-        initCars(cm);
-        CarView cv = new CarView(cm, 800, 560);
-        CarController cc = new CarController(cm, 800);
+        CarModel carModel = new CarModel();
+        initCars(carModel);
+        CarView carView = new CarView(carModel, 800, 560);
+        CarController carController = new CarController(carModel, 800);
 
-        cm.addListener(cv);
+        carModel.addListener(carView);
 
-        jFrame.add(cv);
-        jFrame.add(cc);
+        jFrame.add(carView);
+        jFrame.add(carController);
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         jFrame.pack();
@@ -40,6 +40,6 @@ public class Application {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Start the timer
-        cc.timer.start();
+        carController.timer.start();
     }
 }

@@ -15,8 +15,14 @@ public class CarController extends JPanel {
     private ButtonsAccessor carModel;
     private final int X;
 
-    JPanel controlPanel = new JPanel();
+    public CarController(ButtonsAccessor carModel, int X) {
+        this.carModel = carModel;
+        this.X = X;
+        initComponents();
+        addListeners();
+    }
 
+    JPanel controlPanel = new JPanel();
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
     int gasAmount = 0;
@@ -28,16 +34,8 @@ public class CarController extends JPanel {
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
-
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
-
-    public CarController(ButtonsAccessor carModel, int X) {
-        this.carModel = carModel;
-        this.X = X;
-        initComponents();
-        addListeners();
-    }
 
     private void addListeners() {
         // This actionListener is for the gas button only
@@ -97,9 +95,7 @@ public class CarController extends JPanel {
     }
 
     // Sets everything in place and fits everything
-    // TODO: Take a good look and make sure you understand how these methods and components work
     private void initComponents() {
-
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
@@ -115,7 +111,6 @@ public class CarController extends JPanel {
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
-
         this.add(gasPanel);
 
         controlPanel.setLayout(new GridLayout(2, 4));
@@ -128,6 +123,7 @@ public class CarController extends JPanel {
         controlPanel.add(lowerBedButton, 5);
         controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
         this.add(controlPanel);
+
         controlPanel.setBackground(Color.CYAN);
 
         startButton.setBackground(Color.blue);
@@ -139,10 +135,7 @@ public class CarController extends JPanel {
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
         this.add(stopButton);
-
-
     }
-    // member fields:
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 20;
