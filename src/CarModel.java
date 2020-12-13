@@ -1,16 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarModel { //x och y-koordinaterna ska uppdateras i modellen, viewen ska vara dum
-    //observern: du ändrar något i modellen sen ska du skicka det till alla som lyssnar (ska skicka bilen för att få x- och y-koordinaten)
-    //test
-    ArrayList<MotorVehicle> cars = new ArrayList<>();
-    ArrayList<Observer> listeners = new ArrayList<>();
-    int gasAmount = 50;
-    int breakAmount = 50;
+public class CarModel implements ButtonsAccessor, ListAccessor{
+    List<MotorVehicle> cars = new ArrayList<>();
+    List<Observer> listeners = new ArrayList<>();
 
-    public CarModel(List<MotorVehicle> cars) {
-        this.cars.addAll(cars);
+    public CarModel() {
     }
 
     public void addListener(Observer l) {
@@ -23,10 +18,11 @@ public class CarModel { //x och y-koordinaterna ska uppdateras i modellen, viewe
 
     public void addCar(MotorVehicle car) {
         cars.add(car);
+        notifyListeners();
     }
 
     // Calls the gas method for each car once
-    void gas() {
+    public void gas(int gasAmount) {
         double gas = ((double) gasAmount) / 100;
         //for (ACar car : cars
         for (MotorVehicle car : cars
@@ -35,14 +31,14 @@ public class CarModel { //x och y-koordinaterna ska uppdateras i modellen, viewe
         }
     }
 
-    void brake() {
-        double brake = ((double) breakAmount) / 100;
+    public void brake(int gasAmount) {
+        double brake = ((double) gasAmount) / 100;
         for (MotorVehicle car : cars) {
             car.brake(brake);
         }
     }
 
-    void turboOn() {
+    public void turboOn() {
         for (MotorVehicle car : cars) {
             if (car instanceof Turbo) {
                 ((Turbo) car).setTurboOn();
@@ -50,7 +46,7 @@ public class CarModel { //x och y-koordinaterna ska uppdateras i modellen, viewe
         }
     }
 
-    void turboOff() {
+    public void turboOff() {
         for (MotorVehicle car : cars) {
             if (car instanceof Turbo) {
                 ((Turbo) car).setTurboOff();

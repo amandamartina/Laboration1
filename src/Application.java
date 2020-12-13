@@ -1,16 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
 
-    public static List<MotorVehicle> initCars() {
-        List<MotorVehicle> cars = new ArrayList<>();
-        cars.add(CarFactory.createVolvo());
-        cars.add(CarFactory.createSaab());
-        cars.add(CarFactory.createScania());
-        return cars;
+    public static void initCars(CarModel cm) {
+        cm.addCar(CarFactory.createVolvo());
+        cm.addCar(CarFactory.createSaab());
+        cm.addCar(CarFactory.createScania());
     }
 
     public static void main(String[] args) {
@@ -21,10 +17,15 @@ public class Application {
         jFrame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         //String framename = "CarSim 1.0";
-        CarModel cm = new CarModel(initCars());
-        CarView cv = new CarView(cm);
-        cm.addListener(cv.getObserver());
-        CarController cc = new CarController(cm);
+        CarModel cm = new CarModel();
+        initCars(cm);
+        CarView cv = new CarView(cm, 800, 560);
+        CarController cc = new CarController(cm, 800);
+
+        cm.addListener(cv);
+
+        jFrame.add(cv);
+        jFrame.add(cc);
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         jFrame.pack();

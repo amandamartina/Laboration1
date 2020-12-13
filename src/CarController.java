@@ -11,8 +11,9 @@ import java.awt.event.ActionListener;
  * modifying the model state and the updating the view.
  */
 
-public class CarController extends JPanel{
-    final CarModel carModel;
+public class CarController extends JPanel {
+    private ButtonsAccessor carModel;
+    private final int X;
 
     JPanel controlPanel = new JPanel();
 
@@ -31,8 +32,9 @@ public class CarController extends JPanel{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    public CarController(CarModel model) {
-        this.carModel = model;
+    public CarController(ButtonsAccessor carModel, int X) {
+        this.carModel = carModel;
+        this.X = X;
         initComponents();
         addListeners();
     }
@@ -43,14 +45,14 @@ public class CarController extends JPanel{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carModel.gas();
+                carModel.gas(gasAmount);
             }
 
         });
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carModel.brake();
+                carModel.brake(gasAmount);
             }
         });
 
@@ -128,12 +130,10 @@ public class CarController extends JPanel{
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
-
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
         this.add(startButton);
-
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
