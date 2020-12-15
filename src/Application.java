@@ -21,11 +21,13 @@ public class Application {
         initCars(carModel);
         CarView carView = new CarView(carModel, 800, 560);
         CarController carController = new CarController(carModel, 800);
+        SpeedView speedView = new SpeedView(carModel, 100, 100);
 
         carModel.addListener(carView);
 
         jFrame.add(carView);
         jFrame.add(carController);
+        jFrame.add(speedView);
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         jFrame.pack();
