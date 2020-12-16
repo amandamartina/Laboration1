@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SpeedView extends JPanel implements Observer { //en panel som innehåller en eller flera labels
     private ListAccessor carModel;
@@ -20,7 +18,7 @@ public class SpeedView extends JPanel implements Observer { //en panel som inneh
         revalidate();
     }
 
-    public void updateSpeed() {
+    public void updateSpeed() { //ska ändras
         for (MotorVehicle car : carModel.getCars()) {
             String as = jlabel.getText();
             jlabel.setText(car.getModelName() + " " + car.getCurrentSpeed());
@@ -31,8 +29,5 @@ public class SpeedView extends JPanel implements Observer { //en panel som inneh
     public void actOnUpdate() {
         addSpeedLabel();
         updateSpeed();
-
     }
-
 }
-
