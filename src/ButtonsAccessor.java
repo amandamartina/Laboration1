@@ -16,4 +16,8 @@ public interface ButtonsAccessor {
     void stopAllCars();
 
     void update();
+
+    void addCar(MotorVehicle car);
+
+    void removeCar();
 }

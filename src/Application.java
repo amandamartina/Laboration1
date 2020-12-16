@@ -24,6 +24,7 @@ public class Application {
         SpeedView speedView = new SpeedView(carModel);
 
         carModel.addListener(carView);
+        carModel.addListener(speedView);
 
         jFrame.add(carView);
         jFrame.add(carController);

@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 public class CarController extends JPanel {
     private ButtonsAccessor carModel;
     private final int X;
+    private CarFactory carFactory;
 
     public CarController(ButtonsAccessor carModel, int X) {
         this.carModel = carModel;
@@ -36,6 +37,7 @@ public class CarController extends JPanel {
     JButton lowerBedButton = new JButton("Lower Lift Bed");
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
+    JButton addVolvoButton = new JButton("Add a Volvo240");
 
     private void addListeners() {
         // This actionListener is for the gas button only
@@ -101,7 +103,7 @@ public class CarController extends JPanel {
     }
 
     // Sets everything in place and fits everything
-    private void initComponents() {
+    private void initComponents(){
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
@@ -127,6 +129,7 @@ public class CarController extends JPanel {
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addVolvoButton, 6); //DENNA KNAPPEN HAR LAGTS IN SOM NY.
         controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
         this.add(controlPanel);
 
