@@ -44,6 +44,7 @@ public class CarModel implements ButtonsAccessor, ListAccessor{
         ) {
             car.gas(gas);
         }
+        notifyListeners();
     }
 
     public void brake(int gasAmount) {
@@ -51,6 +52,7 @@ public class CarModel implements ButtonsAccessor, ListAccessor{
         for (MotorVehicle car : cars) {
             car.brake(brake);
         }
+        notifyListeners();
     }
 
     public void turboOn() {
@@ -89,12 +91,14 @@ public class CarModel implements ButtonsAccessor, ListAccessor{
         for (MotorVehicle car : cars) {
             car.startEngine();
         }
+        notifyListeners();
     }
 
     public void stopAllCars() {
         for (MotorVehicle car : cars) {
             car.stopEngine();
         }
+        notifyListeners();
     }
 
     public List<MotorVehicle> getCars() {

@@ -2,33 +2,36 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpeedView extends JLabel implements Observer {
+public class SpeedView extends JPanel implements Observer { //en panel som innehåller en eller flera labels
     private ListAccessor carModel;
     JLabel jlabel = new JLabel();
-    Map<MotorVehicle, Double> speedMap = new HashMap<>();
 
     public SpeedView(ListAccessor carModel, int x, int y) {
         this.carModel = carModel;
-        addSpeedView();
+        this.add(jlabel);
+        addSpeedLabel();
     }
 
-
-    public void addSpeedView() {
-        Map<MotorVehicle, Double> tempMap = new HashMap<>();
+    public void addSpeedLabel() {
         for (MotorVehicle car : carModel.getCars()) {
-            tempMap.put(car, car.getCurrentSpeed());
-            jlabel.setText(printOutSpeed(car));
+            String as = jlabel.getText();
+            jlabel.setText(as + " " + car.getModelName() + " " + car.getCurrentSpeed());
+        }
+        revalidate();
+    }
+
+    public void updateSpeed() {
+        for (MotorVehicle car : carModel.getCars()) {
+            String as = jlabel.getText();
+            jlabel.setText(car.getModelName() + " " + car.getCurrentSpeed());
         }
     }
 
-    private String printOutSpeed(MotorVehicle car) {
-        return (car.getModelName() + car.getCurrentSpeed());
-    }
-
-
     @Override
     public void actOnUpdate() {
-        addSpeedView();
+        addSpeedLabel();
+        updateSpeed();
+
     }
 
 }

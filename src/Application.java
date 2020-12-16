@@ -13,7 +13,7 @@ public class Application {
         // Instance of this class
         JFrame jFrame = new JFrame("CarSim 1.0");
 
-        jFrame.setPreferredSize(new Dimension(800, 800));
+        jFrame.setPreferredSize(new Dimension(1100, 800));
         jFrame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         //String framename = "CarSim 1.0";
