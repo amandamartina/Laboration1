@@ -92,6 +92,12 @@ public class CarController extends JPanel {
                 carModel.lowerLiftBed();
             }
         });
+        addVolvoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.addCar(carFactory.createVolvo());
+            }
+        });
     }
 
     // Sets everything in place and fits everything

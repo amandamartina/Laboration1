@@ -4,18 +4,10 @@ public class SpeedView extends JPanel implements Observer { //en panel som inneh
     private ListAccessor carModel;
     JLabel jlabel = new JLabel();
 
-    public SpeedView(ListAccessor carModel, int x, int y) {
+    public SpeedView(ListAccessor carModel) {
         this.carModel = carModel;
         this.add(jlabel);
-        addSpeedLabel();
-    }
-
-    public void addSpeedLabel() {
-        for (MotorVehicle car : carModel.getCars()) {
-            String as = jlabel.getText();
-            jlabel.setText(as + " " + car.getModelName() + " " + car.getCurrentSpeed());
-        }
-        revalidate();
+        updateSpeed();
     }
 
     public void updateSpeed() { //ska ändras
@@ -27,7 +19,6 @@ public class SpeedView extends JPanel implements Observer { //en panel som inneh
 
     @Override
     public void actOnUpdate() {
-        addSpeedLabel();
         updateSpeed();
     }
 }

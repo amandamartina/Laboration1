@@ -7,6 +7,7 @@ public class Application {
         carModel.addCar(CarFactory.createVolvo());
         carModel.addCar(CarFactory.createSaab());
         carModel.addCar(CarFactory.createScania());
+        carModel.addCar(CarFactory.createScania());
     }
 
     public static void main(String[] args) {
@@ -16,12 +17,11 @@ public class Application {
         jFrame.setPreferredSize(new Dimension(1100, 800));
         jFrame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
-        //String framename = "CarSim 1.0";
         CarModel carModel = new CarModel();
         initCars(carModel);
         CarView carView = new CarView(carModel, 800, 560);
         CarController carController = new CarController(carModel, 800);
-        SpeedView speedView = new SpeedView(carModel, 100, 100);
+        SpeedView speedView = new SpeedView(carModel);
 
         carModel.addListener(carView);
 

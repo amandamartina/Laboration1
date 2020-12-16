@@ -32,14 +32,26 @@ public class CarModel implements ButtonsAccessor, ListAccessor{
     }
 
     public void addCar(MotorVehicle car) {
-        cars.add(car);
-        notifyListeners();
+        if(cars.size() < 10) {
+            car.setyCord(cars.size() * 100);
+            cars.add(car);
+            notifyListeners();
+        }
     }
+
+    public void removeCar(){
+
+    }
+
+    //public void removeCar() {
+      //  if(cars.size() < 1) {
+
+      //  }
+    //}
 
     // Calls the gas method for each car once
     public void gas(int gasAmount) {
         double gas = ((double) gasAmount) / 100;
-        //for (ACar car : cars
         for (MotorVehicle car : cars
         ) {
             car.gas(gas);

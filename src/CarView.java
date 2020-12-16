@@ -31,7 +31,7 @@ public class CarView extends JPanel implements Observer {
 
     @Override
     public void actOnUpdate() {
-        updateImages(); //ej optimalt att läsa in bilderna för varje update från carModel
+        updateImages();
         repaint();
     }
 }
