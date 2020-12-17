@@ -4,12 +4,14 @@
 public interface ButtonsAccessor {
     /**
      * Method to increase the speed of a vehicle.
+     *
      * @param gasAmount The amount you want to increase the speed with.
      */
     void gas(int gasAmount);
 
     /**
      * Method to slow the speed down.
+     *
      * @param gasAmount The amount you want to slow the speed down with.
      */
     void brake(int gasAmount);
@@ -52,6 +54,7 @@ public interface ButtonsAccessor {
 
     /**
      * Method to add car to a list.
+     *
      * @param car The car you want to add.
      */
     void addCar(MotorVehicle car);

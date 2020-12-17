@@ -17,9 +17,10 @@ public class CarView extends JPanel implements Observer {
 
     /**
      * This constructor creates CarView objects.
+     *
      * @param carModel a CarModel, representing our model.
-     * @param x sets the width of the frame
-     * @param y sets the height of the frame
+     * @param x        sets the width of the frame
+     * @param y        sets the height of the frame
      */
     public CarView(ListAccessor carModel, int x, int y) {
         this.setDoubleBuffered(true);
@@ -41,6 +42,7 @@ public class CarView extends JPanel implements Observer {
 
     /**
      * Method that paints the pictures.
+     *
      * @param g The graphics object used.
      */
     @Override

@@ -14,7 +14,6 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
      */
     public MercedesBenz() {
         super(2, Color.green, 500, "MercedesBenz", 15000, 0, 0);
-        //cars = new ArrayList<>(10);
         cars = new Stack<>();
         rampUp = true;
     }
@@ -22,17 +21,16 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     /**
      * Method to put ramp up by setting rampUp to true.
      */
-    //@Override
+    @Override
     public void putRampUp() {
         if (getCurrentSpeed() == 0)
             rampUp = true;
     }
 
-
     /**
      * Method to put  ramp down by setting rampUp to false.
      */
-    //@Override
+    @Override
     public void putRampDown() {
         if (getCurrentSpeed() == 0)
             rampUp = false;
@@ -71,7 +69,6 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
      */
     @Override
     public void unloadCar() {
-        //ska det vara - 1? kom ihåg till test.
         int j = cars.size() - 1;
         if (!this.getRampUp()) {
             switch (getDir()) {
@@ -102,7 +99,6 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     public boolean loadingDistance(MotorVehicle car) {
         return (Math.sqrt(Math.pow(getxCord() - car.getxCord(), 2) + Math.pow(getyCord() - car.getyCord(), 2)) <= proximity);
     }
-
 
     /**
      * Overrides the move function, we need to do update the coordinates of the loaded cars as the
@@ -156,10 +152,4 @@ public class MercedesBenz extends MotorVehicle implements Ramp, Load {
     public int getCarsSize() {
         return cars.size();
     }
-
-    //    @Override
-//    public BufferedImage getCarImage() {
-//        return null;
-//    }
-
 }

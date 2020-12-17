@@ -10,6 +10,7 @@ public class Application {
     /**
      * Method that make it possible to add cars in a list.
      * The class CarFactory is used to create the car-objects.
+     *
      * @param carModel a CarModel, representing our model.
      */
     public static void initCars(CarModel carModel) {
@@ -22,6 +23,7 @@ public class Application {
      * The main method where the the program runs.
      * Here CarModel, CarController, CarView and SpeedView are put.
      * In this method cars are added to the list that is created in CarModel. The frame conditions is also set here.
+     *
      * @param args standard parameter
      */
     public static void main(String[] args) {

@@ -6,6 +6,7 @@ public class CarFactory {
 
     /**
      * This method creates a Volvo240.
+     *
      * @return Volvo240
      */
     public static MotorVehicle createVolvo() {
@@ -14,6 +15,7 @@ public class CarFactory {
 
     /**
      * This method creates a Saab95.
+     *
      * @return Saab95
      */
     public static MotorVehicle createSaab() {
@@ -22,6 +24,7 @@ public class CarFactory {
 
     /**
      * This method creates a Scania.
+     *
      * @return Scania
      */
     public static MotorVehicle createScania() {

@@ -238,9 +238,6 @@ public abstract class MotorVehicle implements Movable { //använder implementati
         return weight;
     }
 
-//    @Override
-//    public abstract BufferedImage getCarImage();
-
     public String getModelName() {
         return modelName;
     }

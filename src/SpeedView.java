@@ -16,6 +16,7 @@ public class SpeedView extends JPanel implements Observer { //en panel som inneh
 
     /**
      * The speedView constructor that creates speedView objects.
+     *
      * @param carModel A parameter of type ListAccessor that gives access to the list of cars in the model.
      */
     public SpeedView(ListAccessor carModel) {

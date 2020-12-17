@@ -6,6 +6,7 @@ import java.util.List;
 public interface ListAccessor {
     /**
      * Method to return the list of the cars.
+     *
      * @return The list of MotorVehicles.
      */
     List<MotorVehicle> getCars();

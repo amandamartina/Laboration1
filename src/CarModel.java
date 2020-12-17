@@ -42,6 +42,7 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
 
     /**
      * Method to add listeners to the list of observers.
+     *
      * @param l The listener you want to add to the list.
      */
     public void addListener(Observer l) {
@@ -59,6 +60,7 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
 
     /**
      * This method adds MotorVehicle objects to the list "cars".
+     *
      * @param car The car you want to add.
      */
     public void addCar(MotorVehicle car) {
@@ -74,12 +76,13 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
      */
     public void removeCar() {
         if (cars.size() > 0) {
-            cars.remove(cars.size()-1);
+            cars.remove(cars.size() - 1);
         }
     }
 
     /**
      * Method to increase the speed of all the cars in our list of cars.
+     *
      * @param gasAmount The amount you want to increase the speed with.
      */
     public void gas(int gasAmount) {
@@ -93,6 +96,7 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
 
     /**
      * This method is used to decrease the speed of the cars.
+     *
      * @param gasAmount The amount you want to slow the speed down with.
      */
     public void brake(int gasAmount) {
@@ -170,6 +174,7 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
 
     /**
      * A method that returns the list containing all the cars.
+     *
      * @return The list of cars.
      */
     public List<MotorVehicle> getCars() {

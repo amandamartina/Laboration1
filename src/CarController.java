@@ -20,6 +20,7 @@ public class CarController extends JPanel {
      * The CarController constructor.
      * This constructor is listening to changes that effects the functions of the buttons.
      * These changes comes from CarModel and are communicated with an observer pattern.
+     *
      * @param carModel a CarModel, representing our model.
      * @param X
      */
@@ -227,7 +228,7 @@ public class CarController extends JPanel {
 
     /**
      * The timer is started with an listener (see below) that executes the statements
-     *     each step between delays.
+     * each step between delays.
      */
 
     protected Timer timer = new Timer(delay, new CarController.TimerListener());

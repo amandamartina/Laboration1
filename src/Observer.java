@@ -4,8 +4,8 @@
  * The views and the model that are mentioned is a part of the MVC-pattern that has been applied in this code base.
  */
 public interface Observer {
-/**
- * Method used for listeners in our observer-pattern to act on update that happens in the model.
- */
+    /**
+     * Method used for listeners in our observer-pattern to act on update that happens in the model.
+     */
     void actOnUpdate();
 }
