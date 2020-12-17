@@ -1,3 +1,7 @@
+/**
+ * This class is a Factory that is used to initialize cars. Classes that wants to initialize cars can use
+ * this class instead and not get dependent on the subclasses constructors.
+ */
 public class CarFactory {
 
     /**

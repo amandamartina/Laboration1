@@ -51,19 +51,61 @@ public class CarController extends JPanel {
      */
     JLabel gasLabel = new JLabel("Amount of gas");
 
+    /**
+     * The graphics for the gasbutton.
+     */
     JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
-    JButton addVolvoButton = new JButton("Add a Volvo240");
 
+    /**
+     * The graphics for the brake button.
+     */
+    JButton brakeButton = new JButton("Brake");
+
+    /**
+     * The graphics for the turboOn button.
+     */
+    JButton turboOnButton = new JButton("Saab Turbo on");
+
+    /**
+     * The graphics for the turboOff button.
+     */
+    JButton turboOffButton = new JButton("Saab Turbo off");
+
+    /**
+     * The graphics for the liftBed button.
+     */
+    JButton liftBedButton = new JButton("Scania Lift Bed");
+
+    /**
+     * The graphics for the lowerBed button.
+     */
+    JButton lowerBedButton = new JButton("Lower Lift Bed");
+
+    /**
+     * Graphics for the button that starts the cars.
+     */
+    JButton startButton = new JButton("Start all cars");
+
+    /**
+     * Graphics for the button that stops the car.
+     */
+    JButton stopButton = new JButton("Stop all cars");
+
+    /**
+     * Graphics for the button that adds a Volvo240 to the frame.
+     */
+    JButton addVolvoButton = new JButton("Add car");
+
+    /**
+     * Graphics for the button that removes cars from the frame.
+     */
+    JButton removeCarButton = new JButton("Remove car");
+
+    /**
+     * This method is listening to user input through buttons being used.
+     * This method includes all of the buttons that the user can use.
+     */
     private void addListeners() {
-        // This actionListener is for the gas button only
-        // TODO: Create more for each component as necessary
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -122,6 +164,12 @@ public class CarController extends JPanel {
                 carModel.addCar(carFactory.createVolvo());
             }
         });
+        removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carModel.removeCar();
+            }
+        });
     }
 
     /**
@@ -154,7 +202,8 @@ public class CarController extends JPanel {
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
-        controlPanel.add(addVolvoButton, 6); //DENNA KNAPPEN HAR LAGTS IN SOM NY.
+        controlPanel.add(addVolvoButton, 6);
+        controlPanel.add(removeCarButton, 7);
         controlPanel.setPreferredSize(new Dimension((X / 2) + 4, 200));
         this.add(controlPanel);
 

@@ -5,9 +5,19 @@ import javax.swing.*;
  * It is a View that shows the speed of each car that is a part of the list of cars in the model.
  */
 public class SpeedView extends JPanel implements Observer { //en panel som innehåller en eller flera labels
-    private ListAccessor carModel;
+    /**
+     * An object of type ListAccessor.
+     */
+    private final ListAccessor carModel;
+    /**
+     * An object of type JLabel.
+     */
     JLabel jlabel = new JLabel();
 
+    /**
+     * The speedView constructor that creates speedView objects.
+     * @param carModel A parameter of type ListAccessor that gives access to the list of cars in the model.
+     */
     public SpeedView(ListAccessor carModel) {
         this.carModel = carModel;
         this.add(jlabel);

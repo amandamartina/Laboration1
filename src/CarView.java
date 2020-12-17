@@ -2,8 +2,17 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
+/**
+ * This class represents graphics only.
+ */
 public class CarView extends JPanel implements Observer {
+    /**
+     * A carmodel of type ListAccessor, is gives access the list of cars.
+     */
     private ListAccessor carModel;
+    /**
+     * A map containing a MotorVehicle as key and an image as value.
+     */
     private Map<MotorVehicle, CarImages> imageMap = new HashMap<>();
 
     /**
@@ -30,6 +39,10 @@ public class CarView extends JPanel implements Observer {
         imageMap = tempMap;
     }
 
+    /**
+     * Method that paints the pictures.
+     * @param g The graphics object used.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

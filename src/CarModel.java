@@ -9,6 +9,10 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
      * The list that we put the cars in.
      */
     List<MotorVehicle> cars = new ArrayList<>();
+
+    /**
+     * The list we put the classes that we want to be observers and listen to updates in the model.
+     */
     List<Observer> listeners = new ArrayList<>();
 
     /**
@@ -36,10 +40,17 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
         notifyListeners();
     }
 
+    /**
+     * Method to add listeners to the list of observers.
+     * @param l The listener you want to add to the list.
+     */
     public void addListener(Observer l) {
         listeners.add(l);
     }
 
+    /**
+     * Method that runs through the list of listeners and calls on the actOnUpdate for each listener.
+     */
     public void notifyListeners() {
         for (Observer observer : listeners) {
             observer.actOnUpdate();
@@ -67,7 +78,10 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
         }
     }
 
-    // Calls the gas method for each car once
+    /**
+     * Method to increase the speed of all the cars in our list of cars.
+     * @param gasAmount The amount you want to increase the speed with.
+     */
     public void gas(int gasAmount) {
         double gas = ((double) gasAmount) / 100;
         for (MotorVehicle car : cars
@@ -89,6 +103,9 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
         notifyListeners();
     }
 
+    /**
+     * Method that turns on the turbo function for each car in the list that has that function.
+     */
     public void turboOn() {
         for (MotorVehicle car : cars) {
             if (car instanceof Turbo) {
@@ -97,6 +114,9 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
         }
     }
 
+    /**
+     * Method that turns the turbofunction off for all cars in the list that has that funciton.
+     */
     public void turboOff() {
         for (MotorVehicle car : cars) {
             if (car instanceof Turbo) {
@@ -105,6 +125,9 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
         }
     }
 
+    /**
+     * This method is used to increase the tilt on the bed of all cars that has this function.
+     */
     public void scaniaLiftBed() {
         for (MotorVehicle car : cars) {
             if (car instanceof Tilt) {
@@ -145,6 +168,10 @@ public class CarModel implements ButtonsAccessor, ListAccessor {
         notifyListeners();
     }
 
+    /**
+     * A method that returns the list containing all the cars.
+     * @return The list of cars.
+     */
     public List<MotorVehicle> getCars() {
         return cars;
     }
