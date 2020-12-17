@@ -1,8 +1,12 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
 import static javax.imageio.ImageIO.*;
 
+/**
+ * This class is used to set the pictures that are found in the directory "pics" that belongs to each car.
+ */
 public class CarImages {
     BufferedImage image;
 

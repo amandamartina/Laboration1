@@ -17,7 +17,7 @@ public class Saab95 extends MotorVehicle implements Turbo{ //CarImages
      * Constructor for Saab95 objects
      */
     public Saab95() {
-        super(2, Color.red, 300, "Saab95", 1000, 0, 100);
+        super(2, Color.red, 300, "Saab95", 1000, 0, 0);
         turboOn = false;
        // try {
          //   saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));

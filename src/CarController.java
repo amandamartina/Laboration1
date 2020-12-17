@@ -5,17 +5,24 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
+/**
  * This class represents the Controller part in the MVC pattern.
  * It's responsibilities is to listen to the View and responds in a appropriate manner by
  * modifying the model state and the updating the view.
+ * This class includes all of the buttons which are related to user input.
  */
-
 public class CarController extends JPanel {
     private ButtonsAccessor carModel;
     private final int X;
     private CarFactory carFactory;
 
+    /**
+     * The CarController constructor.
+     * This constructor is listening to changes that effects the functions of the buttons.
+     * These changes comes from CarModel and are communicated with an observer pattern.
+     * @param carModel a CarModel, representing our model.
+     * @param X
+     */
     public CarController(ButtonsAccessor carModel, int X) {
         this.carModel = carModel;
         this.X = X;
@@ -23,10 +30,25 @@ public class CarController extends JPanel {
         addListeners();
     }
 
+    /**
+     * The control panel.
+     */
     JPanel controlPanel = new JPanel();
+    /**
+     * The gas panel.
+     */
     JPanel gasPanel = new JPanel();
+    /**
+     * The graphical area where the user can put in an amount of gas.
+     */
     JSpinner gasSpinner = new JSpinner();
+    /**
+     * The initial gas amount.
+     */
     int gasAmount = 0;
+    /**
+     * This label shows what speed a specific car has.
+     */
     JLabel gasLabel = new JLabel("Amount of gas");
 
     JButton gasButton = new JButton("Gas");
@@ -102,8 +124,11 @@ public class CarController extends JPanel {
         });
     }
 
-    // Sets everything in place and fits everything
-    private void initComponents(){
+    /**
+     * This method is used to set everything in place and fit everything.
+     * In this method the layout is created.
+     */
+    private void initComponents() {
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
@@ -146,15 +171,22 @@ public class CarController extends JPanel {
         this.add(stopButton);
     }
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
+    /**
+     * The delay (ms) corresponds to 20 updates a sec (hz)
+     */
     private final int delay = 20;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
+
+    /**
+     * The timer is started with an listener (see below) that executes the statements
+     *     each step between delays.
+     */
+
     protected Timer timer = new Timer(delay, new CarController.TimerListener());
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
-     * */
+    /**
+     * Each step the TimerListener moves all the cars in the list and tells the
+     * view to update its images.
+     */
     public class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             carModel.update();

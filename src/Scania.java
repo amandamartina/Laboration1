@@ -14,7 +14,7 @@ public class Scania extends MotorVehicle implements Tilt{//CarImages
      * Constructor for Scania objects
      */
     public Scania() {
-        super(2, Color.blue, 150, "Scania", 10000, 0, 200);
+        super(2, Color.blue, 150, "Scania", 10000, 0, 0);
         this.currentTilt = INITIAL;
         stopEngine();
        // try {

@@ -1,20 +1,34 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class represents the Application part in the MVC pattern.
+ * It is responsible to connect the other MVC components to make the program run.
+ */
 public class Application {
 
+    /**
+     * Method that make it possible to add cars in a list.
+     * The class CarFactory is used to create the car-objects.
+     * @param carModel a CarModel, representing our model.
+     */
     public static void initCars(CarModel carModel) {
         carModel.addCar(CarFactory.createVolvo());
         carModel.addCar(CarFactory.createSaab());
         carModel.addCar(CarFactory.createScania());
-        carModel.addCar(CarFactory.createScania());
     }
 
+    /**
+     * The main method where the the program runs.
+     * Here CarModel, CarController, CarView and SpeedView are put.
+     * In this method cars are added to the list that is created in CarModel. The frame conditions is also set here.
+     * @param args standard parameter
+     */
     public static void main(String[] args) {
         // Instance of this class
         JFrame jFrame = new JFrame("CarSim 1.0");
 
-        jFrame.setPreferredSize(new Dimension(1100, 800));
+        jFrame.setPreferredSize(new Dimension(800, 825));
         jFrame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         CarModel carModel = new CarModel();
